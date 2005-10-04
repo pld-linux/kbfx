@@ -14,6 +14,12 @@ BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+Kbfx started as a small hobby project born out of a spontaneous idea.
+Kbfx is meant to be a kicker bar menu button replacement on KDE ( K
+Desktop Env) The success of kbfx has been the contributions of many
+KDE lovers and Artists. From the current feedback from the community
+the button is to go a long way from what is now! So Every one Lets
+Build Button that Rocks KDE !
 
 %prep
 %setup -q
