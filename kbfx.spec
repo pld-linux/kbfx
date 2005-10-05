@@ -51,9 +51,9 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
 
-%find_lang %{name} --with-kde
-
 install src/kbfx.desktop $RPM_BUILD_ROOT%{_desktopdir}
+
+%find_lang %{name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -63,6 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkbfx*.so*
-%{_libdir}/libkbfx*.la
-%{_desktopdir}/*
+%attr(755,root,root) %{_libdir}/libkbfx.so
+%{_libdir}/libkbfx.la
+%{_datadir}/apps/kicker/applets/kbfx.desktop
+%{_desktopdir}/kbfx.desktop
