@@ -1,4 +1,5 @@
 Summary:	Kicker bar enhancement for KDE
+Summary(pl):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
 Version:	4.7.3
 Release:	1
@@ -15,11 +16,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Kbfx started as a small hobby project born out of a spontaneous idea.
-Kbfx is meant to be a kicker bar menu button replacement on KDE ( K
-Desktop Env) The success of kbfx has been the contributions of many
+Kbfx is meant to be a kicker bar menu button replacement on KDE (K
+Desktop Env). The success of kbfx has been the contributions of many
 KDE lovers and Artists. From the current feedback from the community
 the button is to go a long way from what is now! So Every one Lets
-Build Button that Rocks KDE !
+Build Button that Rocks KDE!
+
+%description -l pl
+Kbfx by³ zapocz±tkowany jako ma³y projekt powsta³y ze spontanicznego
+pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
+Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
 %setup -q
@@ -52,7 +58,11 @@ install src/kbfx.desktop $RPM_BUILD_ROOT%{_desktopdir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkbfx*.so*
+%{_libdir}/libkbfx*.la
 %{_desktopdir}/*
-%{_prefix}/lib/libkbfx*.*
