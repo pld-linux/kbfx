@@ -1,12 +1,16 @@
+
 Summary:	Kicker bar enhancement for KDE
+Summary(de):	Eine Kicker erweiterung für KDE
 Summary(pl):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
-Version:	4.7.3
+Version:	0.4.9.1
 Release:	1
+Epoch:		1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.linuxlots.com/~siraj/kde/plugin/%{name}-%{version}.tar.bz2
-# Source0-md5:	2709e4bf4d7a332603f210a1650b6fa1
+# Source0-md5:	c0141ec96588ca0aa9b12bb8bda88ebc
+Patch0:		%{name}_automake_patch.diff
 URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -22,17 +26,24 @@ KDE lovers and Artists. From the current feedback from the community
 the button is to go a long way from what is now! So Every one Lets
 Build Button that Rocks KDE!
 
+%description -l de
+Kbfx ist spontan entstanden und hat als kleines Projekt angefangen.
+Es soll den Menuknopf in KDE ersetzen. Der Erfolg von Kbfx ist
+der guten zusammenarbeit der KDEfans und der Graphikkünstler zu
+verdanken.
+
 %description -l pl
 Kbfx by³ zapocz±tkowany jako ma³y projekt powsta³y ze spontanicznego
 pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
 Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.sub admin
 
+%{__make} -f Makefile.cvs
 %configure \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
@@ -51,9 +62,9 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
 
-install src/kbfx.desktop $RPM_BUILD_ROOT%{_desktopdir}
+install kbfxspinx/kbfxspinx.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
-%find_lang %{name} --with-kde
+#%find_lang %{name}spinx --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,9 +72,22 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{name}.lang
+#%files -f %{name}spinx.lang
+%files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkbfx.so
-%{_libdir}/libkbfx.la
-%{_datadir}/apps/kicker/applets/kbfx.desktop
-%{_desktopdir}/kbfx.desktop
+%attr(755,root,root) %{_libdir}/libkbfxspinx.so
+%attr(755,root,root) %{_libdir}/kde3/kcm_kcmkbfx.so
+%attr(755,root,root) %{_bindir}/kbfxconfigapp
+%{_libdir}/libkbfxspinx.la
+%{_libdir}/kde3/kcm_kcmkbfx.la
+%{_datadir}/apps/kicker/applets/kbfxspinx.desktop
+%{_datadir}/applications/kde/kbfxconfig.desktop
+%{_datadir}/applications/kde/kcmkbfx.desktop
+%{_datadir}/config.kcfg/kbfx.kcfg
+%{_datadir}/icons/crystalsvg/32x32/apps/*.png
+%{_datadir}/icons/crystalsvg/32x32/actions/*.png
+%{_datadir}/icons/crystalsvg/48x48/actions/*.png
+%{_datadir}/apps/kbfx/*
+%{_datadir}/apps/kbfx/images/*.png
+%{_datadir}/apps/kbfx/skins/default/*.png
+%{_desktopdir}/kbfxspinx.desktop
