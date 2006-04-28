@@ -1,6 +1,6 @@
 
 Summary:	Kicker bar enhancement for KDE
-Summary(de):	Eine Kicker erweiterung für KDE
+Summary(de):	Eine Kicker Erweiterung für KDE
 Summary(pl):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
 Version:	0.4.9.1
