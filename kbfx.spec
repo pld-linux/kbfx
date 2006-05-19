@@ -1,4 +1,3 @@
-
 Summary:	Kicker bar enhancement for KDE
 Summary(de):	Eine Kicker Erweiterung für KDE
 Summary(pl):	Rozszerzenie paska Kickera dla KDE
@@ -38,11 +37,10 @@ pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
 Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
-
 %{__make} -f Makefile.cvs
 %configure \
 %if "%{_lib}" == "lib64"
@@ -75,19 +73,17 @@ rm -rf $RPM_BUILD_ROOT
 #%files -f %{name}spinx.lang
 %files
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kbfxconfigapp
 %attr(755,root,root) %{_libdir}/libkbfxspinx.so
 %attr(755,root,root) %{_libdir}/kde3/kcm_kcmkbfx.so
-%attr(755,root,root) %{_bindir}/kbfxconfigapp
 %{_libdir}/libkbfxspinx.la
 %{_libdir}/kde3/kcm_kcmkbfx.la
 %{_datadir}/apps/kicker/applets/kbfxspinx.desktop
-%{_datadir}/applications/kde/kbfxconfig.desktop
-%{_datadir}/applications/kde/kcmkbfx.desktop
+%{_desktopdir}/kde/kbfxconfig.desktop
+%{_desktopdir}/kde/kcmkbfx.desktop
 %{_datadir}/config.kcfg/kbfx.kcfg
-%{_datadir}/icons/crystalsvg/32x32/apps/*.png
-%{_datadir}/icons/crystalsvg/32x32/actions/*.png
-%{_datadir}/icons/crystalsvg/48x48/actions/*.png
-%{_datadir}/apps/kbfx/*
-%{_datadir}/apps/kbfx/images/*.png
-%{_datadir}/apps/kbfx/skins/default/*.png
+%{_iconsdir}/crystalsvg/32x32/apps/*.png
+%{_iconsdir}/crystalsvg/32x32/actions/*.png
+%{_iconsdir}/crystalsvg/48x48/actions/*.png
+%{_datadir}/apps/kbfx
 %{_desktopdir}/kbfxspinx.desktop
