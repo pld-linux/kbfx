@@ -1,14 +1,16 @@
+%define		_rel	rc1
 Summary:	Kicker bar enhancement for KDE
 Summary(de):	Eine Kicker Erweiterung für KDE
 Summary(pl):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
-Version:	0.4.9.1
-Release:	1
+Version:	0.4.9.2
+Release:	0.%{_rel}.1
 Epoch:		1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://www.linuxlots.com/~siraj/kde/plugin/%{name}-%{version}.tar.bz2
-# Source0-md5:	c0141ec96588ca0aa9b12bb8bda88ebc
+#Source0:	http://www.linuxlots.com/~siraj/kde/plugin/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.gz
+# Source0-md5:	17349a247b5cc4f75eaa6829b92c577c
 Patch0:		%{name}_automake_patch.diff
 URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
 BuildRequires:	autoconf
@@ -37,7 +39,7 @@ pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
 Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_rel}
 %patch0 -p1
 
 %build
