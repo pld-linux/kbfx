@@ -11,7 +11,6 @@ Group:		X11/Applications
 #Source0:	http://www.linuxlots.com/~siraj/kde/plugin/%{name}-%{version}.tar.bz2
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.gz
 # Source0-md5:	17349a247b5cc4f75eaa6829b92c577c
-Patch0:		%{name}_automake_patch.diff
 URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,7 +39,6 @@ Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
 %setup -q -n %{name}-%{version}%{_rel}
-%patch0 -p1
 
 %build
 %{__make} -f Makefile.cvs
