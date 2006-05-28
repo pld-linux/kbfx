@@ -1,16 +1,24 @@
+%bcond_with	snap	# build cvs snapshot
+
+%define		_snap	20060528cvs
 %define		_rel	rc1
+
 Summary:	Kicker bar enhancement for KDE
 Summary(de):	Eine Kicker Erweiterung für KDE
 Summary(pl):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
 Version:	0.4.9.2
-Release:	0.%{_rel}.1
+Release:	0.%{?with_snap:%{_snap}}%{!?with_snap:%{_rel}}.1
 Epoch:		1
 License:	GPL
 Group:		X11/Applications
-#Source0:	http://www.linuxlots.com/~siraj/kde/plugin/%{name}-%{version}.tar.bz2
+%if %{with snap}
+Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
+# Source0-md5:	dc15f465a6d158ae3596795476800fad
+%else
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.gz
 # Source0-md5:	17349a247b5cc4f75eaa6829b92c577c
+%endif
 URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -38,7 +46,7 @@ pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
 Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
-%setup -q -n %{name}-%{version}%{_rel}
+%setup -q -n %{name}-%{?with_snap:%{_snap}}%{!?with_snap:%{version}%{_rel}}
 
 %build
 %{__make} -f Makefile.cvs
