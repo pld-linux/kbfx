@@ -13,8 +13,8 @@ Epoch:		1
 License:	GPL
 Group:		X11/Applications
 %if %{with snap}
-Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
-# Source0-md5:	dc15f465a6d158ae3596795476800fad
+Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
+# Source10-md5:	dc15f465a6d158ae3596795476800fad
 %else
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.gz
 # Source0-md5:	17349a247b5cc4f75eaa6829b92c577c
@@ -46,7 +46,7 @@ pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
 Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
-%setup -q -n %{name}-%{?with_snap:%{_snap}}%{!?with_snap:%{version}%{_rel}}
+%setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{_snap}}%{!?with_snap:%{version}%{_rel}}
 
 %build
 %{__make} -f Makefile.cvs
