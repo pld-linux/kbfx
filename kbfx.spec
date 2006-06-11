@@ -1,6 +1,6 @@
 %bcond_with	snap	# build cvs snapshot
 
-%define		_snap	20060528cvs
+%define		_snap	20060611cvs
 %define		_rel	rc1
 
 Summary:	Kicker bar enhancement for KDE
@@ -14,7 +14,7 @@ License:	GPL
 Group:		X11/Applications
 %if %{with snap}
 Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
-# Source10-md5:	dc15f465a6d158ae3596795476800fad
+# Source10-md5:	bf1e8b2406042b37bdaf03347fad4528
 %else
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.gz
 # Source0-md5:	17349a247b5cc4f75eaa6829b92c577c
