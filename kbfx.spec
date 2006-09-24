@@ -1,7 +1,7 @@
 %bcond_with	snap	# build cvs snapshot
 
 %define		_snap	20060611cvs
-%define		_rel	rc1
+%define		_rel	rc2
 
 Summary:	Kicker bar enhancement for KDE
 Summary(de):	Eine Kicker Erweiterung für KDE
@@ -16,8 +16,8 @@ Group:		X11/Applications
 Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
 # Source10-md5:	bf1e8b2406042b37bdaf03347fad4528
 %else
-Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.gz
-# Source0-md5:	17349a247b5cc4f75eaa6829b92c577c
+Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
+# Source0-md5:	0f4f2b5134c5730305b49460ab8b06aa
 %endif
 URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
 BuildRequires:	autoconf
@@ -35,10 +35,9 @@ the button is to go a long way from what is now! So Every one Lets
 Build Button that Rocks KDE!
 
 %description -l de
-Kbfx ist spontan entstanden und hat als kleines Projekt angefangen.
-Es soll den Menuknopf in KDE ersetzen. Der Erfolg von Kbfx ist
-der guten zusammenarbeit der KDEfans und der Graphikkünstler zu
-verdanken.
+Kbfx ist spontan entstanden und hat als kleines Projekt angefangen. Es
+soll den Menuknopf in KDE ersetzen. Der Erfolg von Kbfx ist der guten
+zusammenarbeit der KDEfans und der Graphikkünstler zu verdanken.
 
 %description -l pl
 Kbfx by³ zapocz±tkowany jako ma³y projekt powsta³y ze spontanicznego
@@ -83,15 +82,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kbfxconfigapp
 %attr(755,root,root) %{_libdir}/libkbfxspinx.so
-%attr(755,root,root) %{_libdir}/kde3/kcm_kcmkbfx.so
 %{_libdir}/libkbfxspinx.la
-%{_libdir}/kde3/kcm_kcmkbfx.la
 %{_datadir}/apps/kicker/applets/kbfxspinx.desktop
-%{_desktopdir}/kde/kbfxconfig.desktop
-%{_desktopdir}/kde/kcmkbfx.desktop
 %{_datadir}/config.kcfg/kbfx.kcfg
-%{_iconsdir}/crystalsvg/32x32/apps/*.png
-%{_iconsdir}/crystalsvg/32x32/actions/*.png
-%{_iconsdir}/crystalsvg/48x48/actions/*.png
+%{_iconsdir}/*/*/*/*.png
 %{_datadir}/apps/kbfx
 %{_desktopdir}/kbfxspinx.desktop
+%{_datadir}/applnk/.hidden/kbfx_theme.desktop
+%{_datadir}/applnk/Utilities/kbfxconfigapp.desktop
+%{_datadir}/apps/kbfxconfigapp/kbfxconfigappui.rc
+%{_datadir}/apps/konqueror/servicemenus/kbfx_install_theme.desktop
+%{_datadir}/mimelnk/application/x-kbfxtheme.desktop
