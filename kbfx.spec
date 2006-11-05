@@ -1,7 +1,7 @@
 %bcond_with	snap	# build cvs snapshot
 
 %define		_snap	20060611cvs
-%define		_rel	rc2
+%define		_rel	rc3
 
 Summary:	Kicker bar enhancement for KDE
 Summary(de):	Eine Kicker Erweiterung für KDE
@@ -17,7 +17,7 @@ Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
 # Source10-md5:	bf1e8b2406042b37bdaf03347fad4528
 %else
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
-# Source0-md5:	0f4f2b5134c5730305b49460ab8b06aa
+# Source0-md5:	f005aad79cce9a4558b73dacf1b3a508
 %endif
 URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
 BuildRequires:	autoconf
