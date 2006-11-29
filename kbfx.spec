@@ -37,7 +37,7 @@ Build Button that Rocks KDE!
 %description -l de
 Kbfx ist spontan entstanden und hat als kleines Projekt angefangen. Es
 soll den Menuknopf in KDE ersetzen. Der Erfolg von Kbfx ist der guten
-zusammenarbeit der KDEfans und der Graphikkünstler zu verdanken.
+Zusammenarbeit der KDE Fans und der Graphikkünstler zu verdanken.
 
 %description -l pl
 Kbfx by³ zapocz±tkowany jako ma³y projekt powsta³y ze spontanicznego
