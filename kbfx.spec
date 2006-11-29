@@ -19,7 +19,7 @@ Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
 # Source0-md5:	52bdd89a284c5d8188898c1d97eb7b48
 %endif
-URL:		http://www.linuxlots.com/~siraj/kde/plugin/home/
+URL:		http://www.kbfx.org
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.2.0
