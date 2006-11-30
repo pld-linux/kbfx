@@ -1,5 +1,7 @@
+#
+# Conditional build:
 %bcond_with	snap	# build cvs snapshot
-
+#
 %define		_snap	20060611cvs
 %define		_rel	rc4
 
@@ -19,7 +21,7 @@ Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
 # Source0-md5:	52bdd89a284c5d8188898c1d97eb7b48
 %endif
-URL:		http://www.kbfx.org
+URL:		http://www.kbfx.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.2.0
@@ -59,7 +61,7 @@ Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}/kde}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -67,8 +69,8 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
 
-install kbfxspinx/kbfxspinx.desktop $RPM_BUILD_ROOT%{_desktopdir}
-
+install kbfxspinx/kbfxspinx.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
+mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Utilities/kbfxconfigapp.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
 #%find_lang %{name}spinx --with-kde
 
 %clean
@@ -83,13 +85,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kbfxconfigapp
 %attr(755,root,root) %{_libdir}/libkbfxspinx.so
 %{_libdir}/libkbfxspinx.la
-%{_datadir}/apps/kicker/applets/kbfxspinx.desktop
-%{_datadir}/config.kcfg/kbfx.kcfg
-%{_iconsdir}/*/*/*/*.png
 %{_datadir}/apps/kbfx
-%{_desktopdir}/kbfxspinx.desktop
-%{_datadir}/applnk/.hidden/kbfx_theme.desktop
-%{_datadir}/applnk/Utilities/kbfxconfigapp.desktop
-%{_datadir}/apps/kbfxconfigapp/kbfxconfigappui.rc
+%{_datadir}/apps/kbfxconfigapp
+%{_datadir}/apps/kicker/applets/kbfxspinx.desktop
 %{_datadir}/apps/konqueror/servicemenus/kbfx_install_theme.desktop
+%{_datadir}/applnk/.hidden/kbfx_theme.desktop
+%{_datadir}/config.kcfg/kbfx.kcfg
 %{_datadir}/mimelnk/application/x-kbfxtheme.desktop
+%{_iconsdir}/*/*/*/*.png
+%{_desktopdir}/kbfxconfigapp.desktop
+%{_desktopdir}/kbfxspinx.desktop
