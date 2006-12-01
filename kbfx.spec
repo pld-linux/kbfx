@@ -93,5 +93,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kbfx.kcfg
 %{_datadir}/mimelnk/application/x-kbfxtheme.desktop
 %{_iconsdir}/*/*/*/*.png
-%{_desktopdir}/kbfxconfigapp.desktop
-%{_desktopdir}/kbfxspinx.desktop
+%{_desktopdir}/kde/kbfxconfigapp.desktop
+%{_desktopdir}/kde/kbfxspinx.desktop
