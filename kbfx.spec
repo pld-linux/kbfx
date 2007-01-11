@@ -21,6 +21,8 @@ Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
 # Source0-md5:	52bdd89a284c5d8188898c1d97eb7b48
 %endif
+Patch0:		%{name}-am110.patch
+Patch1:		kde-ac260-lt.patch
 URL:		http://www.kbfx.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,6 +50,8 @@ Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
 %setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{_snap}}%{!?with_snap:%{version}%{_rel}}
+%patch0 -p0
+%patch1 -p1
 
 %build
 %{__make} -f Makefile.cvs
