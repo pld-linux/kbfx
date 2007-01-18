@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	snap	# build cvs snapshot
 #
-%define		_snap	20070115cvs
+%define		_snap	20070117
 %define		_rel	rc4
 %if %{with snap}
 %define	_ver	0.4.9.3
@@ -20,8 +20,8 @@ Epoch:		1
 License:	GPL
 Group:		X11/Applications
 %if %{with snap}
-Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
-# Source10-md5:	9dc20ed99e1da143af33961fcc6ede39
+Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{version}-%{_snap}.tar.bz2
+# Source10-md5:	d3a823e2ca0e99ed5596e84b9f9907a8
 %else
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
 # Source0-md5:	52bdd89a284c5d8188898c1d97eb7b48
