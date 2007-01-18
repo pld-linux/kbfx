@@ -2,21 +2,26 @@
 # Conditional build:
 %bcond_with	snap	# build cvs snapshot
 #
-%define		_snap	20060611cvs
+%define		_snap	20070115cvs
 %define		_rel	rc4
+%if %{with snap}
+%define	_ver	0.4.9.3
+%else
+%define	_ver	0.4.9.2
+%endif
 
 Summary:	Kicker bar enhancement for KDE
 Summary(de):	Eine Kicker Erweiterung für KDE
 Summary(pl):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
-Version:	0.4.9.2
+Version:	%{_ver}
 Release:	0.%{?with_snap:%{_snap}}%{!?with_snap:%{_rel}}.1
 Epoch:		1
 License:	GPL
 Group:		X11/Applications
 %if %{with snap}
 Source10:	http://dl.sourceforge.net/kbfx/%{name}-%{_snap}.tar.gz
-# Source10-md5:	bf1e8b2406042b37bdaf03347fad4528
+# Source10-md5:	9dc20ed99e1da143af33961fcc6ede39
 %else
 Source0:	http://dl.sourceforge.net/kbfx/%{name}-%{version}%{_rel}.tar.bz2
 # Source0-md5:	52bdd89a284c5d8188898c1d97eb7b48
