@@ -31,6 +31,7 @@ Patch1:		kde-ac260-lt.patch
 URL:		http://www.kbfx.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+%{?with_snap:BuildRequires: cmake}
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,10 +56,15 @@ Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
 %setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{_snap}}%{!?with_snap:%{version}%{_rel}}
+%if !%{with snap}
 %patch0 -p0
 %patch1 -p1
+%endif
 
 %build
+%if %{with snap}
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
+%else
 %{__make} -f Makefile.cvs
 %configure \
 %if "%{_lib}" == "lib64"
@@ -66,7 +72,9 @@ Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 %endif
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir}
+%endif
 %{__make}
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -77,10 +85,11 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}/kde}
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
-
+%if !%{with snap}
 install kbfxspinx/kbfxspinx.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
 mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Utilities/kbfxconfigapp.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
-#%find_lang %{name}spinx --with-kde
+%endif
+#%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -92,15 +101,31 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kbfxconfigapp
+%if %{with snap}
+%{_libdir}/kbfx/plugins/libkbfxplasmadataplasmoid.la
+%attr(755,root,root) %{_libdir}/kbfx/plugins/libkbfxplasmadataplasmoid.so
+%{_libdir}/kbfx/plugins/libkbfxplasmadatasettings.la
+%attr(755,root,root) %{_libdir}/kbfx/plugins/libkbfxplasmadatasettings.so
+%{_libdir}/kbfx/plugins/libkbfxplasmadatastub.la
+%attr(755,root,root) %{_libdir}/kbfx/plugins/libkbfxplasmadatastub.so
+%{_libdir}/libkbfxplasma.la
+%attr(755,root,root) %{_libdir}/libkbfxplasma.so
+%{_libdir}/libkbfxspinxtest.la
+%attr(755,root,root) %{_libdir}/libkbfxspinxtest.so
+%{_datadir}/applnk/Utilities/kbfxconfigapp.desktop
+%{_datadir}/apps/kicker/applets/kbfxspinxtest.desktop
+%{_datadir}/apps/konqueror/servicemenus/kbfx_prepare_theme.desktop
+%else
 %attr(755,root,root) %{_libdir}/libkbfxspinx.so
 %{_libdir}/libkbfxspinx.la
-%{_datadir}/apps/kbfx
-%{_datadir}/apps/kbfxconfigapp
 %{_datadir}/apps/kicker/applets/kbfxspinx.desktop
-%{_datadir}/apps/konqueror/servicemenus/kbfx_install_theme.desktop
-%{_datadir}/applnk/.hidden/kbfx_theme.desktop
-%{_datadir}/config.kcfg/kbfx.kcfg
-%{_datadir}/mimelnk/application/x-kbfxtheme.desktop
-%{_iconsdir}/*/*/*/*.png
 %{_desktopdir}/kde/kbfxconfigapp.desktop
 %{_desktopdir}/kde/kbfxspinx.desktop
+%{_datadir}/config.kcfg/kbfx.kcfg
+%endif
+%{_datadir}/apps/kbfx
+%{_datadir}/apps/kbfxconfigapp
+%{_datadir}/apps/konqueror/servicemenus/kbfx_install_theme.desktop
+%{_datadir}/applnk/.hidden/kbfx_theme.desktop
+%{_datadir}/mimelnk/application/x-kbfxtheme.desktop
+%{_iconsdir}/*/*/*/*.png
