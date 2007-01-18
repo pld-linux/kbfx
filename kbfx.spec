@@ -56,7 +56,7 @@ pomys³u. Ma byæ zamiennikiem przycisku menu w pasku kickera w KDE.
 Sukcesem kbfx by³a wspó³praca ze strony mi³o¶ników KDE i artystów.
 
 %prep
-%setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{_snap}}%{!?with_snap:%{version}%{_rel}}
+%setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{version}-%{_snap}}%{!?with_snap:%{version}%{_rel}}
 %if !%{with snap}
 %patch0 -p0
 %patch1 -p1
