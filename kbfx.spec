@@ -31,7 +31,7 @@ Patch1:		kde-ac260-lt.patch
 URL:		http://www.kbfx.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_snap:BuildRequires: cmake}
+%{?with_snap:BuildRequires: cmake >= 2.4.2}
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
