@@ -121,8 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkbfxspinx.la
 %{_datadir}/apps/kicker/applets/kbfxspinx.desktop
 %{_desktopdir}/kde/kbfxconfigapp.desktop
-%{_desktopdir}/kde/kbfxspinx.desktop
 %{_datadir}/config.kcfg/kbfx.kcfg
+%{_datadir}/apps/konqueror/servicemenus/kbfx_prepare_theme.desktop
 %endif
 %{_datadir}/apps/kbfx
 %{_datadir}/apps/kbfxconfigapp
