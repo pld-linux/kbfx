@@ -8,7 +8,7 @@
 %if %{with snap}
 %define	_ver	.3
 %else
-%define	_ver	.2
+%define	_ver	.3
 %endif
 
 Summary:	Kicker bar enhancement for KDE
