@@ -12,8 +12,8 @@
 %endif
 
 Summary:	Kicker bar enhancement for KDE
-Summary(de):	Eine Kicker Erweiterung f¸r KDE
-Summary(pl):	Rozszerzenie paska Kickera dla KDE
+Summary(de.UTF-8):   Eine Kicker Erweiterung f√ºr KDE
+Summary(pl.UTF-8):   Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
 Version:	%{_mainver}%{_ver}
 Release:	0.%{?with_snap:%{_snap}}%{!?with_snap:%{_rel}}.1
@@ -45,15 +45,15 @@ KDE lovers and Artists. From the current feedback from the community
 the button is to go a long way from what is now! So Every one Lets
 Build Button that Rocks KDE!
 
-%description -l de
+%description -l de.UTF-8
 Kbfx ist spontan entstanden und hat als kleines Projekt angefangen. Es
 soll den Menuknopf in KDE ersetzen. Der Erfolg von Kbfx ist der guten
-Zusammenarbeit der KDE Fans und der Graphikk¸nstler zu verdanken.
+Zusammenarbeit der KDE Fans und der Graphikk√ºnstler zu verdanken.
 
-%description -l pl
-Kbfx by≥ zapocz±tkowany jako ma≥y projekt powsta≥y ze spontanicznego
-pomys≥u. Ma byÊ zamiennikiem przycisku menu w pasku kickera w KDE.
-Sukcesem kbfx by≥a wspÛ≥praca ze strony mi≥o∂nikÛw KDE i artystÛw.
+%description -l pl.UTF-8
+Kbfx by≈Ç zapoczƒÖtkowany jako ma≈Çy projekt powsta≈Çy ze spontanicznego
+pomys≈Çu. Ma byƒá zamiennikiem przycisku menu w pasku kickera w KDE.
+Sukcesem kbfx by≈Ça wsp√≥≈Çpraca ze strony mi≈Ço≈õnik√≥w KDE i artyst√≥w.
 
 %prep
 %setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{version}-%{_snap}}%{!?with_snap:%{version}%{_rel}}
