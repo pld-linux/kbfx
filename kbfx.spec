@@ -12,8 +12,8 @@
 %endif
 
 Summary:	Kicker bar enhancement for KDE
-Summary(de.UTF-8):   Eine Kicker Erweiterung für KDE
-Summary(pl.UTF-8):   Rozszerzenie paska Kickera dla KDE
+Summary(de.UTF-8):	Eine Kicker Erweiterung für KDE
+Summary(pl.UTF-8):	Rozszerzenie paska Kickera dla KDE
 Name:		kbfx
 Version:	%{_mainver}%{_ver}
 Release:	0.%{?with_snap:%{_snap}}%{!?with_snap:%{_rel}}.1
