@@ -34,7 +34,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_snap:BuildRequires: cmake >= 2.4.2}
 BuildRequires:	kdelibs-devel >= 9:3.2.0
-BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	rpmbuild(macros) >= 1.293
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,7 +57,7 @@ Sukcesem kbfx była współpraca ze strony miłośników KDE i artystów.
 
 %prep
 %setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{version}-%{_snap}}%{!?with_snap:%{version}%{_rel}}
-%if !%{with snap}
+%if %{without snap}
 %patch0 -p0
 %patch1 -p1
 %endif
