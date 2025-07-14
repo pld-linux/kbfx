@@ -58,8 +58,8 @@ Sukcesem kbfx była współpraca ze strony miłośników KDE i artystów.
 %prep
 %setup -q -T -b %{?with_snap:1}0 -n %{name}-%{?with_snap:%{version}-%{_snap}}%{!?with_snap:%{version}%{_rel}}
 %if %{without snap}
-%patch0 -p0
-%patch1 -p1
+%patch -P0 -p0
+%patch -P1 -p1
 %endif
 
 %build
